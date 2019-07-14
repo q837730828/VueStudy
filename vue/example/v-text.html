@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>helloworld</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-text&v-html</h1>
+    <hr>
+    <div id="app">
+        <!--v-test是{{}}更友好-->
+        <span>{{message}}</span>
+        <br>
+        <span v-text="message"></span>
+        <br>
+        <!--这种方式会直接把h2标签打印出，没有效果-->
+        <span>{{pangpang}}</span>
+        <br>
+        <!--v-html会导致xss攻击,表单提交时不要使用，不安全。确保完全安全时使用-->
+        <span v-html="pangpang"></span>
+        <br>
+        <span v-text="pangpang"></span>
+    </div>
+
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el:'#app',
+            data:{
+                message: "v-text",
+                pangpang: "<h2>v-test加h2</h2>"
+            }
+
+        })
+    </script>
+    
+</body>
+</html>

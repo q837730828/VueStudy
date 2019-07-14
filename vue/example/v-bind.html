@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-bind实例</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-bind实例</h1>
+    <hr>
+    <div id="app">
+        <p><img v-bind:src="imgSrc" width="100px"></p>
+        <p>
+            <!--简写-->
+            <a :href="webUrl" target="_blank">百度</a>
+        </p>
+        <hr>
+        <div :class="className">1.绑定class</div>
+        <hr>
+        <div :class="{classA:isOk}">2.绑定class中的判断</div>
+        <div>
+            <input type="checkbox" id="isOk" v-model="isOk">
+            <label for="isOk">isOk={{isOk}}</label> 
+        </div>
+
+        <hr>
+        <div :class="[classA, classB]">3.绑定多个class</div>
+        <hr>
+        <div :class="isOk?classA:classB">4.三元运算符</div>
+        <hr>
+        <div :style="{color:red,fontSize:font}">5.绑定style</div>
+        <hr>
+        <div :style="styleObj">5.通过对象绑定style</div>
+        
+    </div>
+    
+    <style>
+            .classA{
+                color: red;
+            }
+            .classB{
+                font-size: 130%
+            }
+    </style>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el:'#app',
+            data:{
+                imgSrc:'data:image/gif;base64,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',
+                webUrl: 'http://baidu.com',
+                className: 'classA',
+                isOk: true,
+                classA: 'classA',
+                classB: 'classB',
+                red: 'red',
+                font: '20px',
+                styleObj:{
+                    color:'green',
+                    fontSize: '30px'
+                }
+            }
+
+        })
+    </script>
+    
+</body>
+</html>
