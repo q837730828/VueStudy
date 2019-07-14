@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue.extend扩展实例构造器</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>vue.extend扩展实例构造器</h1>
+    <hr>
+    <author></author>
+    <div id="author"></div>
+
+
+    <script type="text/javascript">
+        //定义
+        var authorExtend = Vue.extend({
+            template: "<p><a :href='authorURL'>{{authorName}}</a></p>",
+            data:function(){
+                return{
+                    authorName: 'kay',
+                    authorURL: 'http://baidu.com'
+                }
+            }
+        });
+
+        //初始化并绑定标签.
+        new authorExtend().$mount('author');
+        //建议使用这种绑定方式
+        new authorExtend().$mount('#author');
+    </script>
+    
+</body>
+</html>

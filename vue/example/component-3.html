@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>component父子组件</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>component父子组件</h1>
+    <hr>
+    <div id="app">
+       
+        <liukai></liukai>
+    </div>
+    
+
+
+    <script type="text/javascript">
+
+        var liuyuComponent = {
+            template:`<div style="color:green">liuyu is little bro</div>`
+        }
+
+       //组件里面包含了一个组件
+        var liukaiComponenet = {
+            template:`
+            <div>
+                <p>liukai from taiyuan</p>
+                <liuyu></liuyu>
+            </div>
+            `,
+            //不能直接在构造函数中注册，必须在这。是父子关系
+            components:{
+                "liuyu":liuyuComponent
+            }
+        }
+
+
+        var app = new Vue({
+            el:'#app',
+            
+            components: {
+                "liukai": liukaiComponenet,
+                
+            }
+        
+        })
+
+    </script>
+    
+</body>
+</html>
